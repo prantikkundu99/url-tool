@@ -1,0 +1,48 @@
+# create a virtual env 
+python3 -m venv venv
+
+# active env 
+venv\Scripts\activate
+
+# deactive env
+venv\Scripts\deactivate
+
+# install any package
+pip install <package-name> ( pip install django ) 
+
+# create a project in django
+django-admin startproject <projectname> <folderpath> (django-admin startproject root .)
+
+# project runner command 
+python3 manage.py runserver
+
+# app create
+python3 manage.py startapp <app-name> (python3 manage.py startapp urlshortener)
+
+
+# pip backup
+pip freeze > req.txt
+
+# list of packages install
+pip install -r req.txt
+
+# view database in cmd 
+select * from urlshort;
+
+# Cmd database for postgres
+psql -U postgres
+
+create database urlshortener;
+\c #connect
+\l 
+\d
+\dt
+
+# git 
+echo "# url-tool" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/prantikkundu99/url-tool.git
+git push -u origin main

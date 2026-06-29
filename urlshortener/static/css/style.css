@@ -1,0 +1,16 @@
+body{
+    background-color: #bdbebe;
+}
+
+.container-custom{
+     width: 50rem;   
+}
+.alert-custom{
+    padding: 3px 14px !important;
+}
+
+.longurl{
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap:anywhere;
+}

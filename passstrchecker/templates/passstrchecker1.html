@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+    <title>Password Strength Checker</title>
+</head>
+<body>
+
+    <h2>Password Strength Checker</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Enter Password:</label>
+        <input type="text" name="password" required>
+
+        <button type="submit">Check</button>
+    </form>
+
+    {% if strength %}
+        <hr>
+
+        <h3>Results</h3>
+
+        <p><strong>Password:</strong> {{ password }}</p>
+
+        <p><strong>Strength:</strong> {{ strength }}</p>
+
+        <p><strong>Suggestion:</strong> {{ message }}</p>
+    {% endif %}
+
+</body>
+{% endblock %}

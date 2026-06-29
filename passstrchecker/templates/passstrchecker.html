@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+    <div class="container my-2 p-3  d-flex  justify-content-center  ">
+        <div class="bg-light container-custom d-flex flex-column p-5">
+            
+        <p class="fs-2 fw-bold text-body-secondary d-flex justify-content-center">Password Strength Checker</p>
+
+
+            
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label class="form-label">Enter Password:</label>
+    <input type="text" name="password" required class="form-control mb-3">
+
+    <button type="submit" class="btn btn-primary">Check</button>
+</form>
+        
+
+{% if strength %}
+
+<hr>
+
+<h3>Results</h3>
+
+<p><strong>Password:</strong> {{ password }}</p>
+
+<p><strong>Strength:</strong> {{ strength }}</p>
+
+<p><strong>Suggestion:</strong> {{ message }}</p>
+
+<hr>
+
+<h3>Password Requirements</h3>
+
+<p class="{% if has_upper %}text-success{% else %}text-danger{% endif %} fw-bold">
+    <input type="checkbox" {% if has_upper %}checked{% endif %} disabled>
+    Contains Uppercase Letter
+</p>
+
+<p class="{% if has_lower %}text-success{% else %}text-danger{% endif %} fw-bold">
+    <input type="checkbox" {% if has_lower %}checked{% endif %} disabled>
+    Contains Lowercase Letter
+</p>
+
+<p class="{% if has_digit %}text-success{% else %}text-danger{% endif %} fw-bold">
+    <input type="checkbox" {% if has_digit %}checked{% endif %} disabled>
+    Contains Number
+</p>
+
+<p class="{% if has_symbol %}text-success{% else %}text-danger{% endif %} fw-bold">
+    <input type="checkbox" {% if has_symbol %}checked{% endif %} disabled>
+    Contains Special Character
+</p>
+
+
+        </div>
+    </div>
+
+
+
+
+{% endif %}
+
+{% endblock %}

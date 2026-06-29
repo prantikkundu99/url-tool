@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="container my-2 p-3  d-flex  justify-content-center">
+    <div class="bg-light container-custom d-flex flex-column p-5">
+        <p class="fs-2 fw-bold text-body-secondary d-flex justify-content-center">Paste the URL to be shortened</p>
+        
+        
+        <!-- output link -->
+         {% if shorturl %}
+            <form class="row gy-2 gx-3 align-items-center d-flex justify-content-center mb-3" >
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3 border border-black" id="autoSizingInputGroup" placeholder="Enter The link here" value="{{shorturl}}">
+                        <button class="btn btn-primary fs-6 fw-bold" type="button" id="copyurl" data-url="{{shorturl}}">Copy Url</button>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-success d-none align-items-center alert-custom" role="alert" id="success-alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <div id="alerttext"></div>
+            </div>
+            <p class="d-flex mx-auto">Long URL: <a href="{{longurl}}" target="_blank" class="longurl">{{longurl}}</a> </p>
+
+        {% else %}
+        
+            <!-- imput link -->
+            <form class="row gy-2 gx-3 align-items-center d-flex justify-content-center mb-3" action="{% url 'urlshort' %}" method="post">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control p-3 border border-black" id="autoSizingInputGroup" placeholder="Enter The link here" name="link" id="url">
+                        <button class="btn btn-primary fs-6 fw-bold" type="submit">Shorten Url</button>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+        <p class="d-flex justify-content-center">ShortURL is a free tool to shorten URLs and generate short links</p>
+        <p class="d-flex justify-content-center">URL shortener allows to create a shortened link making it easy to share</p>
+    </div>
+</div>
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}

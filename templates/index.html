@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Url Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+  </head>
+  <body>
+    {% include 'layout/header.html' %}
+
+    <div class="container my-2 p-3  d-flex  justify-content-center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == '/' %}active {% endif %}" aria-current="page" href="{% url 'urlshort' %}">Urlshort</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == '/passgen/' %}active {% endif %}" href="{% url 'passgenerator' %}">Password Generator</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.get_full_path == '/passstrchecker/' %}active {% endif %}" aria-current="page" href="{% url 'passstrchecker' %}">Password Strength Checker</a>
+        </li>
+      </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
