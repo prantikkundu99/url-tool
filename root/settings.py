@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST':"127.0.0.1",
+        'HOST':"db.prisma.io",
         "PORT":"5432",
-        "USER":"postgres",
-        "PASSWORD":"123456",
-        "NAME":"urlshortener"
+        "USER":"ef1f6f241426c4e25066ea65394016e62a4ca08de7c7ff583dd089712f745df7",
+        "PASSWORD":"sk_ZDoV44KRo5EoqpmYVhDjL",
+        "NAME":"postgres"
     }
 }
 
